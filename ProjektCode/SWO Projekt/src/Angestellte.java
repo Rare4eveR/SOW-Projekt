@@ -8,20 +8,23 @@ public class Angestellte extends Mitarbeiter{
         StundenLohn = stundenLohn;
         UeberstundenLohn = ueberstundenLohn;
         StundenAnzahl = stundenAnzahl;
-        this.ueberStundenAnzahl = ueberStundenAnzahl;
+        this.UeberStundenAnzahl = ueberStundenAnzahl;
     }
 
     private double StundenLohn;
 	private double UeberstundenLohn;
 	private double StundenAnzahl;
-    private double ueberStundenAnzahl;
+    private double UeberStundenAnzahl;
 
 	public void Angestellte(double StundenLohn, double StundenAnzahl, double UeberstundenLohn, double ueberStundenAnzahl ){
 
+
     }
-	public void GehaltBerechnen(double StundenLohn, double Ueberstunden){
+	public double GehaltBerechnen(){
 
+        double Gehalt = StundenLohn *  StundenAnzahl + UeberstundenLohn * UeberStundenAnzahl;
 
+        return Gehalt;
     }
 
     public double getStundenLohn() {
