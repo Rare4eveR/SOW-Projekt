@@ -14,17 +14,13 @@ public class Mitarbeiter {
     private LocalDate letzteErhoehung;
     private LocalDate letztePraemie;
 
-    public Mitarbeiter(String _nachname, String _vorname, String _adresse, LocalDate _geburtsdatum, LocalDate _eintrittsdatum) {
+    public Mitarbeiter(String _nachname, String _vorname, String mitArbeiterArt, String _adresse, LocalDate _geburtsdatum, LocalDate _eintrittsdatum, LocalDate _letzteErhoehung, LocalDate _letztePraemie) {
         vorname = _vorname;
         nachname = _nachname;
         adresse = _adresse;
         geburtsdatum = _geburtsdatum;
         eintrittsdatum = _eintrittsdatum;}
 
-
-    public void LohnErhoehen() {
-
-    }
 
     public void setGeburtsjahr(int _geburtsjahr) {
         geburtsjahr = _geburtsjahr;
