@@ -4,4 +4,4 @@ Projektwoche im July 2024
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Projekt von:
-Arkadius Skatulla und Devran Sakar
+Arkadius Skatulla (Rare4eveR) und Devran Sakar(Azz72)
