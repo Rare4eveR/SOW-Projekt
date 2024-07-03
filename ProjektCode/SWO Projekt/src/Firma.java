@@ -160,7 +160,7 @@ public class Firma {
 
     /**
      *
-     * DurchschnittAlter ermitteln
+     * Durchschnittliches Alter ermitteln
      * @return
      */
 
