@@ -1,10 +1,28 @@
 import java.time.LocalDate;
 
+/**
+ * @version 1.0
+ * @author Devran Sakar, Arkadius Skatulla
+ */
+
 public class Manager extends Mitarbeiter {
     private double managerLohn;
     private double provisionsSatz;
     private double gewinn;
     private String laufNummer;
+
+    /**
+     *
+     * @param nachname Nachname der Person
+     * @param vorname Vorname der Person
+     * @param adresse Adresse der Person
+     * @param geburtsdatum Geburtsdatum der Person
+     * @param eintrittsdatum Eintrittsdatum der Person
+     * @param geschlecht Geschlecht der Person
+     * @param letzteErhoehung letzte Gehaltserhöhung
+     * @param letztePraemie letzte Premie
+     * @throws Exception wenn der Managerlohn oder der Provisionssatz ungültig ist
+     *      */
 
     public Manager(String nachname, String vorname, String adresse, LocalDate geburtsdatum,
                    LocalDate eintrittsdatum, char geschlecht, LocalDate letzteErhoehung, LocalDate letztePraemie) throws Exception {
@@ -17,6 +35,8 @@ public class Manager extends Mitarbeiter {
         }
         laufNummer = super.generateLaufnummer();
     }
+
+
 
     @Override
     public String generateLaufnummer() {
@@ -33,6 +53,8 @@ public class Manager extends Mitarbeiter {
         }
         this.managerLohn = managerLohn;
     }
+
+
 
     public double getProvisionsSatz() {
         return provisionsSatz;
@@ -53,6 +75,13 @@ public class Manager extends Mitarbeiter {
         setGewinn(0);
         return provision * provisionsSatz;
     }
+
+    /**
+     *
+     * @param prozentsatz der Prozentsatz, um den der Lohn erhöht werden soll
+     * @throws Exception wenn der Prozentsatz ungültig ist
+     */
+
 
     public void lohnErhoehen(double prozentsatz) throws Exception {
         if (prozentsatz > 0 && prozentsatz <= 15) {
