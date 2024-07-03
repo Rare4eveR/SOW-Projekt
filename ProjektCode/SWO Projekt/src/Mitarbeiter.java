@@ -5,20 +5,20 @@ public abstract class Mitarbeiter {
     private String nachname;
     private String adresse;
     private char geschlecht;
-    private LocalDate geburtsjahr;
+    private LocalDate geburtsdatum;
     private LocalDate eintrittsdatum;
     private LocalDate austrittsdatum;
     private LocalDate letzteErhoehung;
     private LocalDate letztePraemie;
 
-    public Mitarbeiter(String nachname, String vorname, String adresse, LocalDate geburtsjahr,
+    public Mitarbeiter(String nachname, String vorname, String adresse, LocalDate geburtsdatum,
                        LocalDate eintrittsdatum, char geschlecht, LocalDate letzteErhoehung, LocalDate letztePraemie) {
         try {
             setGeschlecht(geschlecht);
             setNachname(nachname);
             setVorname(vorname);
             setAdresse(adresse);
-            setGeburtsjahr(geburtsjahr);
+            setGeburtsjahr(geburtsdatum);
             setEintrittsdatum(eintrittsdatum);
             setLetzteErhoehung(letzteErhoehung);
             setLetztePraemie(letztePraemie);
@@ -62,7 +62,7 @@ public abstract class Mitarbeiter {
     }
 
     public LocalDate getGeburtsjahr() {
-        return geburtsjahr;
+        return geburtsdatum;
     }
 
     public void setGeburtsjahr(LocalDate geburtsjahr) throws Exception {
@@ -71,7 +71,7 @@ public abstract class Mitarbeiter {
         } else if (geburtsjahr.getYear() > LocalDate.now().getYear() - 13) {
             throw new Exception("Mitarbeiter ist zu jung.");
         }
-        this.geburtsjahr = geburtsjahr;
+        this.geburtsdatum = geburtsdatum;
     }
 
     public LocalDate getEintrittsdatum() {

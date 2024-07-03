@@ -1,10 +1,13 @@
+import java.time.LocalDate;
+
 public class Manager extends Mitarbeiter {
     private double managerLohn;
     private double provisionsSatz;
     private double gewinn;
     private String laufNummer;
 
-    public Manager() throws Exception {
+    public Manager(String nachname, String vorname, String adresse, LocalDate geburtsdatum,
+                   LocalDate eintrittsdatum, char geschlecht, LocalDate letzteErhoehung, LocalDate letztePraemie) throws Exception {
         super(nachname, vorname, adresse, geburtsdatum, eintrittsdatum, geschlecht, null, null);
         try {
             setManagerLohn(managerLohn);

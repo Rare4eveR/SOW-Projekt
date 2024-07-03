@@ -9,13 +9,13 @@ public class Geschäftsführer extends Manager {
                             LocalDate geburtsdatum, LocalDate eintrittsdatum, char geschlecht,
                             double managerLohn, double provisionsSatz, double geschaftsfuehrerZulage) throws Exception {
         super(nachname , vorname ,adresse , geburtsdatum, eintrittsdatum, geschlecht, managerLohn, provisionsSatz);
-        kennung = super.kennung();
+        laufNummer = super.laufNummer();
 
     }
 
     @Override
     public String getKennung(){
-        return Kennung;
+        return laufNummer;
     }
 
     public double getGeschaftsfuehrerZulage() {
@@ -40,7 +40,7 @@ public class Geschäftsführer extends Manager {
     public String toString() {
         return super.toString() +
        "geschaeftsfuehrerZulage= " + geschaftsfuehrerZulage + "\"" +
-       ",kennung=" + kennung + "€";
+       ",kennung=" + laufNummer + "€";
     }
 
 }
