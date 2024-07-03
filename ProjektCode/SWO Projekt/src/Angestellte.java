@@ -42,7 +42,7 @@ public class Angestellte extends Mitarbeiter {
 
     public void setUeberstundenLohn(double ueberstundenLohn) throws Exception {
         if (ueberstundenLohn <= stundenLohn) {
-            throw new Exception("Der Überstundenlohn muss höher als der Reguläre Lohn sein.");
+            throw new Exception("Der Überstundenlohn muss höher sein als der Reguläre Lohn.");
         }
         this.ueberstundenLohn = ueberstundenLohn;
     }
