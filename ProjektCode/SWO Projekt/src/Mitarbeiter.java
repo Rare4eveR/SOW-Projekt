@@ -1,11 +1,5 @@
 import java.time.LocalDate;
 
-/**
- *
- * Version 1.0 Arkadius Skatulla, Devran Sakar
- *
- */
-
 public abstract class Mitarbeiter {
     private String vorname;
     private String nachname;
