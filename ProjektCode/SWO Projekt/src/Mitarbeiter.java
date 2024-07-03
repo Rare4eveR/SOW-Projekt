@@ -1,9 +1,5 @@
 import java.time.LocalDate;
 
-/**
- * @version 1.0
- * @author Devran Sakar, Arkadius Skatulla
- */
 public abstract class Mitarbeiter {
     private String vorname;
     private String nachname;
@@ -14,19 +10,6 @@ public abstract class Mitarbeiter {
     private LocalDate austrittsdatum;
     private LocalDate letzteErhoehung;
     private LocalDate letztePraemie;
-
-    /**
-     *
-     * @param nachname Nachname der Person
-     * @param vorname Vorname der Person
-     * @param adresse Adresse der Person
-     * @param geburtsdatum Geburtsdatum der Person
-     * @param eintrittsdatum Eintrittsdatum der Person
-     * @param geschlecht Geschlecht der Person
-     * @param letzteErhoehung letzte Gehaltserhöhung
-     * @param letztePraemie letzte Premie
-     * @throws Exception
-     *      */
 
     public Mitarbeiter(String nachname, String vorname, String adresse, LocalDate geburtsdatum,
                        LocalDate eintrittsdatum, char geschlecht, LocalDate letzteErhoehung, LocalDate letztePraemie) {

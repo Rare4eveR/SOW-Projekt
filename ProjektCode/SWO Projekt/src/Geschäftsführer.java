@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 
+
 public class Geschäftsführer extends Manager {
 
     private String laufNummer;
