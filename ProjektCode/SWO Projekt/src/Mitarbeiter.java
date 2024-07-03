@@ -1,113 +1,138 @@
 import java.time.LocalDate;
 
-public class Mitarbeiter {
-    private int geburtsjahr;
-    private char geschlecht;
+public abstract class Mitarbeiter {
     private String vorname;
     private String nachname;
-    private LocalDate geburtsdatum;
-    private int laufNummer;
     private String adresse;
-    private String mitArbeiterArt;
+    private char geschlecht;
+    private LocalDate geburtsjahr;
     private LocalDate eintrittsdatum;
     private LocalDate austrittsdatum;
     private LocalDate letzteErhoehung;
     private LocalDate letztePraemie;
 
-    public Mitarbeiter(String _nachname, String _vorname, String mitArbeiterArt, String _adresse, LocalDate _geburtsdatum, LocalDate _eintrittsdatum, LocalDate _letzteErhoehung, LocalDate _letztePraemie) {
-        vorname = _vorname;
-        nachname = _nachname;
-        adresse = _adresse;
-        geburtsdatum = _geburtsdatum;
-        eintrittsdatum = _eintrittsdatum;}
-
-
-    public void setGeburtsjahr(int _geburtsjahr) {
-        geburtsjahr = _geburtsjahr;
-
-    }
-    public void setGeschlecht(char _geschlecht) {
-        geschlecht = _geschlecht;
-
-    }
-
-    public void setVorname(String _vorname) {
-        vorname = _vorname;
-
-    }
-
-    public void setNachname(String _nachname) {
-        nachname = _nachname;
-
-    }
-
-    public void setGeburtsdatum(LocalDate _geburtsdatum) {
-        geburtsdatum = _geburtsdatum;
-    }
-
-    public void setEintrittsdatum(LocalDate _eintrittsdatum) {
-        eintrittsdatum = _eintrittsdatum;
-
-    }
-
-    public void setAustrittsdatum(LocalDate _austrittsdatum) {
-        austrittsdatum = _austrittsdatum;
-
-    }
-
-    public void setAdresse(String _adresse) {
-        adresse = _adresse;
-
-    }
-
-    public void setMitArbeiterArt(String _mitArbeiterArt) {
-        mitArbeiterArt = _mitArbeiterArt;
-
-    }
-
-    public int getGeburtsjahr() {
-        return geburtsjahr;
-
-    }
-
-    public char getGeschlecht() {
-        return geschlecht;
-
-    }
-    public String getVorname() {
-        return vorname;
+    public Mitarbeiter(String nachname, String vorname, String adresse, LocalDate geburtsjahr,
+                       LocalDate eintrittsdatum, char geschlecht, LocalDate letzteErhoehung, LocalDate letztePraemie) {
+        try {
+            setGeschlecht(geschlecht);
+            setNachname(nachname);
+            setVorname(vorname);
+            setAdresse(adresse);
+            setGeburtsjahr(geburtsjahr);
+            setEintrittsdatum(eintrittsdatum);
+            setLetzteErhoehung(letzteErhoehung);
+            setLetztePraemie(letztePraemie);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        generateLaufnummer();
     }
 
     public String getNachname() {
         return nachname;
-
     }
 
-    public LocalDate getGeburtsdatum() {
-        return geburtsdatum;
-
+    public void setNachname(String nachname) throws Exception {
+        if (nachname.isBlank()) {
+            throw new Exception("Der Nachname ist leer.");
+        }
+        this.nachname = nachname;
     }
 
-    public LocalDate getEintrittsdatum() {
-        return eintrittsdatum;
-
+    public String getVorname() {
+        return vorname;
     }
 
-    public LocalDate getAustrittsdatum() {
-
-        return austrittsdatum;
-
+    public void setVorname(String vorname) throws Exception {
+        if (vorname.isBlank()) {
+            throw new Exception("Der Vorname ist leer.");
+        }
+        this.vorname = vorname;
     }
 
     public String getAdresse() {
         return adresse;
-
     }
 
-    public String getMitArbeiterArt() {
-        return mitArbeiterArt;
-
+    public void setAdresse(String adresse) throws Exception {
+        if (adresse.isBlank()) {
+            throw new Exception("Die Adresse ist leer.");
+        }
+        this.adresse = adresse;
     }
 
+    public LocalDate getGeburtsjahr() {
+        return geburtsjahr;
+    }
 
+    public void setGeburtsjahr(LocalDate geburtsjahr) throws Exception {
+        if (geburtsjahr == null) {
+            throw new Exception("Geburtsjahr ist leer.");
+        } else if (geburtsjahr.getYear() > LocalDate.now().getYear() - 13) {
+            throw new Exception("Mitarbeiter ist zu jung.");
+        }
+        this.geburtsjahr = geburtsjahr;
+    }
+
+    public LocalDate getEintrittsdatum() {
+        return eintrittsdatum;
+    }
+
+    public void setEintrittsdatum(LocalDate eintrittsdatum) throws Exception {
+        if (eintrittsdatum == null) {
+            throw new Exception("Eintrittsdatum ist leer.");
+        }
+        this.eintrittsdatum = eintrittsdatum;
+    }
+
+    public LocalDate getAustrittsdatum() {
+        return austrittsdatum;
+    }
+
+    public void setAustrittsdatum(LocalDate austrittsdatum) throws Exception {
+        if (austrittsdatum == null) {
+            throw new Exception("Austrittsdatum ist leer.");
+        }
+        this.austrittsdatum = austrittsdatum;
+    }
+
+    public char getGeschlecht() {
+        return geschlecht;
+    }
+
+    public void setGeschlecht(char geschlecht) throws Exception {
+        if (geschlecht != 'w' && geschlecht != 'm' && geschlecht != 'd') {
+            throw new Exception("Geschlecht ist nicht zugelassen.");
+        }
+        this.geschlecht = geschlecht;
+    }
+
+    public LocalDate getLetzteErhoehung() {
+        return letzteErhoehung;
+    }
+
+    public void setLetzteErhoehung(LocalDate letzteErhoehung) throws Exception {
+        if (letzteErhoehung == null) {
+            throw new Exception("Es kam bisher zu keiner Erhöhung.");
+        }
+        this.letzteErhoehung = letzteErhoehung;
+    }
+
+    public LocalDate getLetztePraemie() {
+        return letztePraemie;
+    }
+
+    public void setLetztePraemie(LocalDate letztePraemie) throws Exception {
+        if (letztePraemie == null) {
+            throw new Exception("Es kam bisher zu keiner Prämie.");
+        }
+        this.letztePraemie = letztePraemie;
+    }
+
+    public String generateLaufnummer() {
+        return getNachname().substring(0, 1) + getVorname().substring(0, 1) + getClass().getSimpleName().substring(0, 1)
+                + getGeschlecht() + getGeburtsjahr().getYear();
+    }
+
+    public abstract double GehaltBerechnen();
 }
