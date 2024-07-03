@@ -89,7 +89,7 @@ public class Firma {
                     temp = angestellteMitarbeiter[i].GehaltBerechnen();
                 }
             } else if (angestellteMitarbeiter[i] == null) {
-                System.out.println("The List is empty at index " + i);
+                System.out.println("Der Index i der Liste ist Leer." + i);
                 break;
             }
         }
@@ -104,13 +104,29 @@ public class Firma {
                     temp = angestellteMitarbeiter[i].GehaltBerechnen();
                 }
             } else if (angestellteMitarbeiter[i] == null) {
-                System.out.println("The List is empty at index " + i);
+                System.out.println("Der Index i der Liste ist Leer." + i);
                 break;
             }
         }
         return temp;
     }
 
+    public double VerdienstSpanne(){
+        return MaxLohn() - MinLohn();
+    }
+
+    public double DurchschittsAlter(){
+        double temp = 0.0;
+        for (int i = 0; i < angestellteMitarbeiter.length; i++) {
+            if (angestellteMitarbeiter[i] != null) {
+                temp += angestellteMitarbeiter[i].getGeburtsjahr().getYear();
+            } else if (angestellteMitarbeiter[i] == null) {
+                System.out.println("Der Index i der Liste ist Leer." + i);
+                break;
+            }
+        }
+        return temp / getAnzahlMitarbeiter();
+    }
 
 }
 
