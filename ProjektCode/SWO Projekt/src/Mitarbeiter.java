@@ -136,7 +136,7 @@ public abstract class Mitarbeiter {
     }
 
     public String generateLaufnummer() {
-        return getNachname().substring(0, 1) + getVorname().substring(0, 1) + getClass().getSimpleName().substring(0, 1)
+        return getNachname().substring(0, 1) + getVorname().substring(0, 1)
                 + getGeschlecht() + getGeburtsjahr().getYear();
     }
 
