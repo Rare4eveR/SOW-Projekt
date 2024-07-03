@@ -20,6 +20,11 @@ public class Angestellte extends Mitarbeiter {
         }
     }
 
+    public Angestellte(String nachname, String vorname, String adresse, LocalDate geburtsdatum,
+                       LocalDate eintrittsdatum, char geschlecht) throws Exception {
+        super(nachname, vorname, adresse, geburtsdatum, eintrittsdatum, geschlecht, null, null);
+    }
+
     public double getStundenLohn() {
         return stundenLohn;
     }
