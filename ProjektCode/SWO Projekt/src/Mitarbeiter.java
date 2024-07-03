@@ -135,6 +135,12 @@ public abstract class Mitarbeiter {
         this.letztePraemie = letztePraemie;
     }
 
+    /**
+     * Hier wird die Laufnummer Generiert.
+     * Diese erstellen wir indem wir jeweils den Ersten Buchstaben des Angesprochenen Strings an einenader hängen.
+     *
+     * @return
+     */
     public String generateLaufnummer() {
         return getNachname().substring(0, 1) + getVorname().substring(0, 1)
                 + getGeschlecht() + getGeburtsjahr().getYear();
