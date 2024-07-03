@@ -1,62 +1,63 @@
 import java.time.LocalDate;
 
-public class Manager extends Mitarbeiter{
-    private double ManagerLohn;
-    private double ProvisionSatz;
+public class Manager extends Mitarbeiter {
+    private double managerLohn;
+    private double provisionsSatz;
     private double gewinn;
-    private String kennung;
+    private String laufNummer;
 
-    public Manager(String nachname, String vorname, String adresse, LocalDate geburtsdatum, LocalDate eintrittsdatum,char geschlecht, double managerLohn, double provisionSatz) throws Exception {
-        super(nachname, vorname, adresse, geburtsdatum, eintrittsdatum, geschlecht);
-        try{
+    public Manager(String nachname, String vorname, String adresse, LocalDate geburtsdatum, LocalDate eintrittsdatum, char geschlecht, double managerLohn, double provisionsSatz) throws Exception {
+        super(nachname, vorname, adresse, geburtsdatum, eintrittsdatum, geschlecht, null, null);
+        try {
             setManagerLohn(managerLohn);
-            setProvisionSatz(provisionSatz);
-        }
-        catch(Exception e){
+            setProvisionsSatz(provisionsSatz);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        kennung = super.generateLaufnummer();
+        laufNummer = super.generateLaufnummer();
     }
+
     @Override
     public String generateLaufnummer() {
-        return kennung;
+        return laufNummer;
     }
 
     public double getManagerLohn() {
-        return ManagerLohn;
+        return managerLohn;
     }
 
-    public void setManagerLohn(double managerLohn) throws Exception{
-        if (ManagerLohn <= 0) {
-            throw new Exception("Manager Lohn should be greater than 0.");
+    public void setManagerLohn(double managerLohn) throws Exception {
+        if (managerLohn <= 0) {
+            throw new Exception("Der Managerlohn muss größer als 0 sein.");
         }
-        ManagerLohn = managerLohn;
+        this.managerLohn = managerLohn;
     }
 
-    public double getProvisionSatz() {
-        return ProvisionSatz;
+    public double getProvisionsSatz() {
+        return provisionsSatz;
     }
 
-    public void setProvisionSatz(double provisionSatz) throws Exception{
-        if (ProvisionSatz <= 0) {
-            throw new Exception("Provision Satz should be greater than 0.");
+    public void setProvisionsSatz(double provisionsSatz) throws Exception {
+        if (provisionsSatz <= 0) {
+            throw new Exception("Der Provisionssatz muss größer als 0 sein.");
         }
-        ProvisionSatz = provisionSatz;
+        this.provisionsSatz = provisionsSatz;
     }
-    public double ProvisionBerechnen(){
-        if(gewinn <= 0){
+
+    public double berechneProvision() {
+        if (gewinn <= 0) {
             return 0;
         }
-        double z = getGewinn();
+        double provision = getGewinn();
         setGewinn(0);
-        return z * ProvisionSatz;
+        return provision * provisionsSatz;
     }
 
-    public void LohnErhoehen(double Prozentsatz) throws Exception {
-        if (Prozentsatz > 0 && Prozentsatz <= 10){
-            ManagerLohn += ManagerLohn * (Prozentsatz / 100);
+    public void lohnErhoehen(double prozentsatz) throws Exception {
+        if (prozentsatz > 0 && prozentsatz <= 15) {
+            managerLohn += managerLohn * (prozentsatz / 100);
         } else {
-            throw new Exception("Prozentsatz should be greater than 0. and not more than 10.");
+            throw new Exception("Der Prozentsatz muss größer als 0 und kleiner als 15 sein.");
         }
     }
 
@@ -70,15 +71,15 @@ public class Manager extends Mitarbeiter{
 
     @Override
     public double GehaltBerechnen() {
-        return ManagerLohn + ProvisionBerechnen();
+        return managerLohn + berechneProvision();
     }
 
     @Override
     public String toString() {
         return super.toString() +
-                "ManagerLohn=" + ManagerLohn +
-                "€, ProvisionSatz=" + ProvisionSatz +
-                "%, gewinn=" + gewinn +
-                "€, kennung='" + kennung + '\'' ;
+                "Managerlohn=" + managerLohn +
+                "€, Provisionssatz=" + provisionsSatz +
+                "%, Gewinn=" + gewinn +
+                "Laufnummer='" + laufNummer + '\'';
     }
 }
