@@ -2,6 +2,12 @@ import java.time.LocalDate;
 
 public class Firma {
 
+    /**
+     *
+     * Version 1.0 Arkadius Skatulla, Devran Sakar
+     *
+     */
+
 
     private Mitarbeiter[] angestellteMitarbeiter = new Mitarbeiter[20];
     private Mitarbeiter[] ehemaligeMitarbeiter;
@@ -19,10 +25,17 @@ public class Firma {
 
     }
 
+    /**
+     *
+     * Getter und Setter
+     *
+     * @return
+     */
     public Mitarbeiter[] getAngestellteMitarbeiter() {
 
         return angestellteMitarbeiter;
     }
+
 
     public void setAngestellteMitarbeiter(Mitarbeiter[] angestellteMitarbeiter) throws Exception {
         for (int i = 0; i < angestellteMitarbeiter.length; i++) {
@@ -56,6 +69,12 @@ public class Firma {
         Firma.anzahlMitarbeiter = anzahlMitarbeiter;
     }
 
+    /**
+     *
+     * Mitarbeiter Hinzufügen
+     * @param mitarbeiter
+     * @throws Exception
+     */
     public void mitarbeiterHinzufuegen(Mitarbeiter mitarbeiter) throws Exception {
         if (mitarbeiter == null) {
             throw new Exception("mitarbeiter must not be null");
@@ -66,6 +85,12 @@ public class Firma {
             }
         }
     }
+
+    /**
+     * Mitarbeiter Entfernen
+     * @param mitarbeiter
+     * @throws Exception
+     */
 
     public void mitarbieterEntfernen(Mitarbeiter mitarbeiter) throws Exception {
         if (mitarbeiter == null) {
@@ -83,6 +108,12 @@ public class Firma {
         }
     }
 
+    /**
+     *Niedrigsten Lohn berechnen
+     *
+     * @return
+     */
+
     public double MinLohn(){
         double temp = MaxLohn();
         for (int i = 0; i < angestellteMitarbeiter.length; i++) {
@@ -97,6 +128,12 @@ public class Firma {
         }
         return temp;
     }
+
+    /**
+     *
+     * Den höchsten Lohn Berechnen
+     * @return
+     */
 
     public double MaxLohn(){
         double temp = 0.0;
@@ -113,9 +150,19 @@ public class Firma {
         return temp;
     }
 
+    /**
+     * Die Verdienstspanne festlegen
+     * @return
+     */
     public double VerdienstSpanne(){
         return MaxLohn() - MinLohn();
     }
+
+    /**
+     *
+     * DurchschnittAlter ermitteln
+     * @return
+     */
 
     public double DurchschittsAlter(){
         double temp = 0.0;
@@ -130,6 +177,14 @@ public class Firma {
         return temp / getAnzahlMitarbeiter();
     }
 
+    /**
+     *
+     *  Ermittelt den am Längsten Eingestellten Mitarbeiter des Unternehmens.
+     *
+     * @return
+     */
+
+
     public Mitarbeiter LaengsterMitarbeiter(){
         int temp = LocalDate.now().getYear();
         Mitarbeiter mitarbeiter = null;
@@ -143,6 +198,8 @@ public class Firma {
         }
         return mitarbeiter;
     }
+
+
 
 }
 
