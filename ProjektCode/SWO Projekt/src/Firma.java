@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Firma {
 
 
@@ -126,6 +128,20 @@ public class Firma {
             }
         }
         return temp / getAnzahlMitarbeiter();
+    }
+
+    public Mitarbeiter LaengsterMitarbeiter(){
+        int temp = LocalDate.now().getYear();
+        Mitarbeiter mitarbeiter = null;
+        for (int i = 0; i < angestellteMitarbeiter.length; i++) {
+            if (angestellteMitarbeiter[i] != null) {
+                if (angestellteMitarbeiter[i].getEintrittsdatum().getYear() < temp) {
+                    mitarbeiter = angestellteMitarbeiter[i];
+                    temp = angestellteMitarbeiter[i].getEintrittsdatum().getYear();
+                }
+            }
+        }
+        return mitarbeiter;
     }
 
 }
